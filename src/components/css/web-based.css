@@ -1,0 +1,7 @@
+td {
+  padding: 0.1em;
+}
+
+td:hover {
+  background-color: #5d9fe0;
+}
