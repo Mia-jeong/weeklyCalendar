@@ -1,16 +1,29 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 import Header from "./Header";
 import Week from "./weekly/Week";
+import { fetchDay } from "../actions/dateActions";
 
-const App = () => {
-  return (
-    <div>
-      <Header />
-      <div className="ui container">
-        <Week />
+class App extends Component {
+  componentDidMount() {
+    this.props.fetchDay();
+  }
+  render() {
+    return (
+      <div>
+        <Header />
+        <div className="box">
+          <div className="initial" />
+          <div className="calendarBox">
+            <Week />
+          </div>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
-export default App;
+export default connect(
+  null,
+  { fetchDay }
+)(App);

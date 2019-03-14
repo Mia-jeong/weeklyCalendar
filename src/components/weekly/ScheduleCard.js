@@ -1,24 +1,24 @@
-import React, { Component } from "react";
+import React from "react";
+import * as TableUtil from "../../utils/table";
 
 const ScheduleCard = props => {
-  let { start, end } = props;
-  let heightCnt = (end - start) / 0.5 + 1;
-  let startCnt = start / 0.5 - 18,
-    topHeight = 58,
-    cellHeight = 40;
-  let startPoint = topHeight + cellHeight * startCnt,
-    height = cellHeight * heightCnt,
-    colour = props.colour || "#ddd";
+  let { startPoint, height, colour } = TableUtil.cellHeightCaculator(
+    props,
+    0.5,
+    18,
+    52,
+    24.8
+  );
 
-  // console.log("startPoint", startPoint);
-  // console.log("height", height);
   const styleConfig = {
     position: "absolute",
     top: `${startPoint}px`,
+    left: "3px",
     width: "120px",
     height: `${height}px`,
     border: "2px solid white",
-    backgroundColor: colour
+    backgroundColor: colour,
+    borderRadius: "5px"
   };
   return (
     <div style={styleConfig} onClick={() => alert("card click")}>

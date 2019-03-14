@@ -14,7 +14,6 @@ class DayTable extends Component {
 
   trRender() {
     let trs = [];
-    let tdColour = this.props.colour || null;
     for (let index = 9; index <= 20; index += 0.5) {
       let time = `${index}:00`;
       if (index % 1 === 0.5) {
@@ -25,8 +24,8 @@ class DayTable extends Component {
           time={time}
           key={index}
           id={index}
-          colour={tdColour}
           standard={this.props.standard}
+          day={this.props.day}
         />
       );
     }
@@ -34,10 +33,15 @@ class DayTable extends Component {
     return trs;
   }
   scheduleCardRender() {
-    let start = 14;
-    let end = 16;
+    let start = 10;
+    let end = 11;
     if (!this.props.standard) {
-      return <ScheduleCard start={start} end={end} colour={"#5d9fe0"} />;
+      return (
+        <div>
+          <ScheduleCard start={start} end={end} />{" "}
+          <ScheduleCard start={16} end={17} colour={"#dd4b39"} />
+        </div>
+      );
     } else {
       return null;
     }
@@ -46,10 +50,13 @@ class DayTable extends Component {
     return (
       <div style={this.divStyle()}>
         {this.scheduleCardRender()}
-        <table className="ui small selectable  celled table">
+
+        <table className="ui calendarTable">
           <thead>
-            <tr style={{ height: "40px" }}>
-              <th>{this.props.day}</th>
+            <tr>
+              <th>
+                {this.props.day.dayNameEng} / {this.props.day.date}
+              </th>
             </tr>
           </thead>
           <tbody>{this.trRender()}</tbody>

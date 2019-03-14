@@ -1,8 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Daytable from "./DayTable";
 import WeeklyPagination from "./WeeklyPagination";
+import * as DateUtil from "../../utils/date";
 
+import { mapStateToPropsForWeek } from "../../utils/state";
 class Week extends Component {
+  componentDidMount() {}
+  weekRender() {
+    if (this.props.standardDay) {
+      const weekList = DateUtil.weekList(
+        this.props.standardDay.day,
+        this.props.increment
+      );
+      // console.log(weekList);
+      return weekList.map(day => {
+        return <Daytable day={day} key={day.date} />;
+      });
+    }
+    return "Loading";
+  }
   render() {
     return (
       <div>
@@ -10,18 +27,18 @@ class Week extends Component {
           <WeeklyPagination />
         </div>
         <div>
-          <Daytable day={"Time/Day"} colour={"#f9fafb"} standard={true} />
-          <Daytable day={1} />
-          <Daytable day={2} />
-          <Daytable day={3} />
-          <Daytable day={4} />
-          <Daytable day={5} />
-          <Daytable day={6} />
-          <Daytable day={7} />
+          <Daytable
+            day={{
+              dayNameEng: "Time",
+              date: "Day"
+            }}
+            standard={true}
+          />
+          {this.weekRender()}
         </div>
       </div>
     );
   }
 }
 
-export default Week;
+export default connect(mapStateToPropsForWeek)(Week);

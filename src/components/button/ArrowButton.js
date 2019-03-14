@@ -1,15 +1,23 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
 
-const ArrowButton = props => {
-  return (
-    <button className="ui icon button">
-      <i className={`angle ${props.direction} icon`} />
-    </button>
-    // <button className={`ui ${props.direction} labeled icon button`}>
-    //   <i className={`angle ${props.direction} icon`} />
-    //   {props.text}
-    // </button>
-  );
-};
+import { fetchDayAndIncrement } from "../../actions/dateActions";
 
-export default ArrowButton;
+import { mapStateToPropsForWeek } from "../../utils/state";
+class ArrowButton extends Component {
+  onClick = () => {
+    this.props.fetchDayAndIncrement(this.props.value);
+  };
+  render() {
+    return (
+      <button className="ui icon button" onClick={this.onClick}>
+        <i className={`angle ${this.props.direction} icon`} />
+      </button>
+    );
+  }
+}
+
+export default connect(
+  mapStateToPropsForWeek,
+  { fetchDayAndIncrement }
+)(ArrowButton);
