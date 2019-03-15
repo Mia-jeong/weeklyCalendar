@@ -18,6 +18,16 @@ td:hover {
   box-shadow: 0 0 0 #a3c293 inset;
 }
 
+.calendarTable th.red {
+  background: #fff6f6 !important;
+  color: #99302f !important;
+}
+
+.calendarTable th.today {
+  background: #fcfff5 !important;
+  color: #246425 !important;
+}
+
 .calendarTable th {
   background: #f9fafb !important;
   color: rgba(0, 0, 0, 0.87);

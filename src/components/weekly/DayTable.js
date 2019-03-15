@@ -54,7 +54,7 @@ class DayTable extends Component {
         <table className="ui calendarTable">
           <thead>
             <tr>
-              <th>
+              <th className={`calendarTr ${this.props.day.colourClass}`}>
                 {this.props.day.dayNameEng} / {this.props.day.date}
               </th>
             </tr>

@@ -1,8 +1,9 @@
 import React from "react";
 const DayTable = props => {
   const clickMethod = () => {
-    if (!props.standard) {
-      return alert(props.id);
+    if (props.day) {
+      let { fullDate } = props.day;
+      return alert(fullDate + " " + props.id);
     }
   };
 
