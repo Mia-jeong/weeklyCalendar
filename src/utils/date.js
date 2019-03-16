@@ -1,5 +1,5 @@
 import moment from "moment";
-
+import "moment-timezone";
 // export const getDateInfo = increment => {
 //   let tday = moment();
 
@@ -25,7 +25,7 @@ import moment from "moment";
 // };
 
 export const getDateInfo = (fullDateDash, value, flag) => {
-  let tday = moment();
+  let tday = timeZone();
 
   if (flag) {
     tday = dateMove(fullDateDash || tday.format("YYYY-MM-DD"), value, flag);
@@ -37,8 +37,8 @@ export const getDateInfo = (fullDateDash, value, flag) => {
   const dayNmKr = ["일", "월", "화", "수", "목", "금", "토"];
 
   let colourClass = "";
-  if (day === "0") colourClass = "red";
-  if (day === "6") colourClass = "blue";
+  if (day === "0") colourClass = "red"; //sunday
+  if (day === "6") colourClass = "blue"; //saturday
   if (tday.isSame(moment(), "day")) colourClass = "today";
 
   return {
@@ -54,6 +54,16 @@ export const getDateInfo = (fullDateDash, value, flag) => {
   };
 };
 
+export const timeZone = (date, timeZone = "Asia/Seoul") => {
+  var nowDate = moment(date)
+    .tz(timeZone)
+    .format();
+
+  nowDate = moment(nowDate);
+
+  return nowDate;
+};
+
 export const weekList = (fullDateDash, day) => {
   const weekDays = [];
   for (let index = day; index >= 0; index--) {
@@ -67,7 +77,7 @@ export const weekList = (fullDateDash, day) => {
 
 export const dateMove = (fullDateDash, value, flag) => {
   // console.log("dateMove", fullDateDash, value, flag);
-  const temp = moment(fullDateDash);
+  const temp = timeZone(fullDateDash);
   if (flag === "M") {
     return temp.add(value, "month").startOf("month");
   } else if (flag === "Y") {
@@ -80,17 +90,17 @@ export const dateMove = (fullDateDash, value, flag) => {
 };
 
 export const dateDiff = (day, day2, value, flag) => {
-  const temp = moment(day2.fullDateDash);
+  const temp = timeZone(day2.fullDateDash);
   if (flag === "M") {
-    day = moment(day2.fullDateDash)
+    day = timeZone(day2.fullDateDash)
       .add(value, "month")
       .startOf("month");
   } else if (flag === "Y") {
-    day = moment(day2.fullDateDash)
+    day = timeZone(day2.fullDateDash)
       .add(value, "year")
       .startOf("year");
   } else {
-    day = new moment();
+    day = new timeZone();
   }
   return day.diff(temp, "days");
 };
