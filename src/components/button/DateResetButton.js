@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { fetchDayAndIncrement } from "../../actions/dateActions";
+import { fetchDay } from "../../actions/dateActions";
 const DateResetButton = props => {
   const onClick = () => {
-    props.fetchDayAndIncrement(0, true);
+    props.fetchDay();
   };
   return (
     <button className="ui blue basic button" onClick={onClick}>
@@ -15,5 +15,5 @@ const DateResetButton = props => {
 
 export default connect(
   null,
-  { fetchDayAndIncrement }
+  { fetchDay }
 )(DateResetButton);

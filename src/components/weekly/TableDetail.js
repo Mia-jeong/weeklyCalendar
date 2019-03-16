@@ -1,5 +1,5 @@
 import React from "react";
-const DayTable = props => {
+const TableDetail = props => {
   const clickMethod = () => {
     if (props.day) {
       let { fullDate } = props.day;
@@ -22,4 +22,4 @@ const DayTable = props => {
   return <tr className={`calendarTr ${colourClass}`}>{tdRender()}</tr>;
 };
 
-export default DayTable;
+export default TableDetail;

@@ -1,3 +1,1 @@
 export const FETCH_DAY = "FETCH_DAY";
-export const FETCH_INCREMENT = "FETCH_INCREMENT";
-export const INCREMENT_RESET = "INCREMENT_RESET";

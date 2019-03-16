@@ -6,16 +6,18 @@ import { mapStateToPropsForWeek } from "../../utils/state";
 import * as DateUtil from "../../utils/date";
 
 const WeeklyPagination = props => {
-  const monthDiffBefore = DateUtil.dateDiff(null, props.standardDay, -1, "M");
+  const { standardDay } = props;
 
-  const monthDiffAfter = DateUtil.dateDiff(null, props.standardDay, 1, "M");
+  // const monthDiffBefore = DateUtil.dateDiff(null, standardDay, -1, "M");
+
+  // const monthDiffAfter = DateUtil.dateDiff(null, standardDay, 1, "M");
 
   const dateRender = () => {
-    if (props.standardDay) {
-      const { fullYear, month } = props.standardDay;
+    if (standardDay) {
+      const { fullYear, month } = standardDay;
       return (
         <label>
-          <strong>{` ${fullYear} / ${month + 1} `}</strong>
+          <strong>{` ${fullYear} / ${month} `}</strong>
         </label>
       );
     }
@@ -24,11 +26,11 @@ const WeeklyPagination = props => {
 
   return (
     <div style={{ display: "inline-block" }}>
-      <ArrowButton direction="double left" value={monthDiffBefore} />
-      <ArrowButton direction="left" value={-7} />
+      <ArrowButton direction="double left" value={-1} flag="M" />
+      <ArrowButton direction="left" value={-7} flag="D" />
       {dateRender()}
-      <ArrowButton direction="right" value={7} />
-      <ArrowButton direction="double right" value={monthDiffAfter} />
+      <ArrowButton direction="right" value={7} flag="D" />
+      <ArrowButton direction="double right" value={1} flag="M" />
 
       <DateResetButton />
     </div>

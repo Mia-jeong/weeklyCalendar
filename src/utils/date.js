@@ -1,61 +1,96 @@
-export const getDateInfo = increment => {
-  const tday = new Date();
+import moment from "moment";
 
-  if (increment) tday.setDate(tday.getDate() + increment);
-  const day = tday.getDay();
-  const date = tday.getDate();
-  const fullYear = tday.getFullYear();
-  const month = tday.getMonth();
-  const dayNmEng = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
+// export const getDateInfo = increment => {
+//   let tday = moment();
+
+//   if (increment) tday = tday.add(increment, "day");
+//   const day = tday.format("d");
+//   const date = tday.format("DD");
+//   const fullYear = tday.format("YYYY");
+//   const month = tday.format("M");
+//   const dayNmKr = ["일", "월", "화", "수", "목", "금", "토"];
+
+//   return {
+//     date: date,
+//     day: day,
+//     fullYear: fullYear,
+//     month: month,
+//     colourClass: (increment === 0 && "today") || (day === "0" && "red") || "",
+//     increment: increment,
+//     dayNameEng: tday.format("ddd"),
+//     dayNameKr: dayNmKr[day],
+//     fullDate: tday.format("YYYYMMDD"),
+//     fullDateDash: tday.format("YYYY-MM-DD")
+//   };
+// };
+
+export const getDateInfo = (fullDateDash, value, flag) => {
+  let tday = moment();
+
+  if (flag) {
+    tday = dateMove(fullDateDash || tday.format("YYYY-MM-DD"), value, flag);
+  }
+  const day = tday.format("d");
+  const date = tday.format("DD");
+  const fullYear = tday.format("YYYY");
+  const month = tday.format("M");
   const dayNmKr = ["일", "월", "화", "수", "목", "금", "토"];
+
+  let colourClass = "";
+  if (day === "0") colourClass = "red";
+  if (day === "6") colourClass = "blue";
+  if (tday.isSame(moment(), "day")) colourClass = "today";
+
   return {
     date: date,
     day: day,
     fullYear: fullYear,
     month: month,
-    colourClass: (increment === 0 && "today") || (day === 0 && "red") || "",
-    increment: increment,
-    dayNameEng: dayNmEng[day],
+    colourClass: colourClass,
+    dayNameEng: tday.format("ddd"),
     dayNameKr: dayNmKr[day],
-    fullDate:
-      fullYear +
-      "" +
-      numberRender(month + 1, true) +
-      "" +
-      numberRender(date, true)
+    fullDate: tday.format("YYYYMMDD"),
+    fullDateDash: tday.format("YYYY-MM-DD")
   };
 };
 
-export const numberRender = (number, flag = false) => {
-  if (flag) {
-    return number < 10 ? "0" + number : number;
-  } else {
-    return parseInt(number);
-  }
-};
-
-export const weekList = (today, increment) => {
+export const weekList = (fullDateDash, day) => {
   const weekDays = [];
-  for (let index = today - 1; index >= 0; index--) {
-    weekDays.push(getDateInfo(increment + index * -1));
+  for (let index = day; index >= 0; index--) {
+    weekDays.push(getDateInfo(fullDateDash, index * -1, "D"));
   }
-  for (let index = 1; index <= 7 - today; index++) {
-    weekDays.push(getDateInfo(increment + index));
+  for (let index = 1; index < 7 - day; index++) {
+    weekDays.push(getDateInfo(fullDateDash, index, "D"));
   }
   return weekDays;
 };
 
-export const dateDiff = (day, day2, value, flag) => {
-  const tempDay = new Date(day2.fullYear, day2.month, day2.date);
-
-  let currDay = 24 * 60 * 60 * 1000;
-
+export const dateMove = (fullDateDash, value, flag) => {
+  // console.log("dateMove", fullDateDash, value, flag);
+  const temp = moment(fullDateDash);
   if (flag === "M") {
-    day = new Date(day2.fullYear, day2.month + value, 1);
+    return temp.add(value, "month").startOf("month");
+  } else if (flag === "Y") {
+    return temp.add(value, "year").startOf("year");
+  } else if (flag === "D") {
+    return temp.add(value, "day");
+  } else {
+    return temp;
   }
-  if (flag === "T") {
-    day = new Date();
-  }
+};
 
-  return (new Date(day.fullYear, day.month, day.date) - tempDay) / currDay;
+export const dateDiff = (day, day2, value, flag) => {
+  const temp = moment(day2.fullDateDash);
+  if (flag === "M") {
+    day = moment(day2.fullDateDash)
+      .add(value, "month")
+      .startOf("month");
+  } else if (flag === "Y") {
+    day = moment(day2.fullDateDash)
+      .add(value, "year")
+      .startOf("year");
+  } else {
+    day = new moment();
+  }
+  return day.diff(temp, "days");
 };

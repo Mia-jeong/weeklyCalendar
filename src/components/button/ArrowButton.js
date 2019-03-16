@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchDayAndIncrement } from "../../actions/dateActions";
+import { fetchDay } from "../../actions/dateActions";
 
 import { mapStateToPropsForWeek } from "../../utils/state";
 class ArrowButton extends Component {
   onClick = () => {
-    this.props.fetchDayAndIncrement(this.props.value);
+    this.props.fetchDay(
+      this.props.standardDay.fullDateDash,
+      this.props.value,
+      this.props.flag
+    );
   };
   render() {
     return (
@@ -19,5 +23,5 @@ class ArrowButton extends Component {
 
 export default connect(
   mapStateToPropsForWeek,
-  { fetchDayAndIncrement }
+  { fetchDay }
 )(ArrowButton);

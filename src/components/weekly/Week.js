@@ -10,8 +10,8 @@ class Week extends Component {
   weekRender() {
     if (this.props.standardDay) {
       const weekList = DateUtil.weekList(
-        this.props.standardDay.day,
-        this.props.increment
+        this.props.standardDay.fullDateDash,
+        this.props.standardDay.day
       );
       // console.log(weekList);
       return weekList.map(day => {
