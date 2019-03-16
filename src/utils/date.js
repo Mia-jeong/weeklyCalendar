@@ -45,25 +45,17 @@ export const weekList = (today, increment) => {
   return weekDays;
 };
 
-export const dateDiff = (day, day2, flag, value) => {
+export const dateDiff = (day, day2, value, flag) => {
   const tempDay = new Date(day2.fullYear, day2.month, day2.date);
 
   let currDay = 24 * 60 * 60 * 1000;
 
-  //현재날짜와 전달 1일과 다음달 1일의 차이 구하기
-  if (!day) {
-    if (flag === "before") {
-      day = new Date(day2.fullYear, day2.month + value, 1);
-
-      return (tempDay - day) / currDay;
-    } else if (flag === "after") {
-      day = new Date(day2.fullYear, day2.month + value, 1);
-
-      return (day - tempDay) / currDay;
-    } else {
-      return tempDay;
-    }
+  if (flag === "M") {
+    day = new Date(day2.fullYear, day2.month + value, 1);
+  }
+  if (flag === "T") {
+    day = new Date();
   }
 
-  return (day - tempDay) / currDay;
+  return (new Date(day.fullYear, day.month, day.date) - tempDay) / currDay;
 };

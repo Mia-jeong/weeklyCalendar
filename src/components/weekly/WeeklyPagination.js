@@ -6,14 +6,9 @@ import { mapStateToPropsForWeek } from "../../utils/state";
 import * as DateUtil from "../../utils/date";
 
 const WeeklyPagination = props => {
-  const monthDiffBefore = DateUtil.dateDiff(
-    null,
-    props.standardDay,
-    "before",
-    -1
-  );
+  const monthDiffBefore = DateUtil.dateDiff(null, props.standardDay, -1, "M");
 
-  const monthDiffAfter = DateUtil.dateDiff(null, props.standardDay, "after", 1);
+  const monthDiffAfter = DateUtil.dateDiff(null, props.standardDay, 1, "M");
 
   const dateRender = () => {
     if (props.standardDay) {
@@ -29,7 +24,7 @@ const WeeklyPagination = props => {
 
   return (
     <div style={{ display: "inline-block" }}>
-      <ArrowButton direction="double left" value={monthDiffBefore * -1} />
+      <ArrowButton direction="double left" value={monthDiffBefore} />
       <ArrowButton direction="left" value={-7} />
       {dateRender()}
       <ArrowButton direction="right" value={7} />
