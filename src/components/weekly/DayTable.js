@@ -1,8 +1,12 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import { fetchDaySchedule } from "../../actions/dateActions";
 import TableDetail from "./TableDetail";
 import ScheduleCard from "./ScheduleCard";
 class DayTable extends Component {
+  componentDidMount() {
+    this.props.fetchDaySchedule(this.props.day.fullDate);
+  }
   divStyle() {
     const width = this.props.width || "130px";
     return {
@@ -33,18 +37,24 @@ class DayTable extends Component {
     return trs;
   }
   scheduleCardRender() {
-    let start = 10;
-    let end = 11;
-    if (!this.props.standard) {
-      return (
-        <div>
-          <ScheduleCard start={start} end={end} />{" "}
-          <ScheduleCard start={16} end={17} colour={"#dd4b39"} />
-        </div>
-      );
-    } else {
-      return null;
+    const { daySchedule } = this.props;
+
+    if (daySchedule) {
+      console.log("daySchedule", daySchedule);
+      return daySchedule.map(d => {
+        console.log(d);
+        return (
+          <ScheduleCard
+            start={d.startTime}
+            end={d.endTime}
+            colour={d.colour}
+            key={d.startTime}
+          />
+        );
+      });
     }
+
+    return null;
   }
   render() {
     return (
@@ -66,4 +76,13 @@ class DayTable extends Component {
   }
 }
 
-export default DayTable;
+const mapStateToProps = (state, ownProps) => {
+  const daySchedule = state.scheduleList[ownProps.day.fullDate];
+  const abc = daySchedule ? Object.values(daySchedule) : [];
+
+  return { daySchedule: daySchedule ? Object.values(daySchedule) : [] };
+};
+export default connect(
+  mapStateToProps,
+  { fetchDaySchedule }
+)(DayTable);

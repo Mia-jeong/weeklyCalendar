@@ -33,3 +33,24 @@ export const cellHeightCaculator = (
     colour: colour || "#ddd"
   };
 };
+
+// export const cellHeightCaculator = (
+//   { start, end, colour },
+//   divider,
+//   num,
+//   topHeight,
+//   cellHeight
+// ) => {
+//   const d = (1.0 / 60) * 100;
+//   let tempStart = start % 1;
+//   tempStart = start - tempStart + tempStart * d;
+//   let tempEnd = end % 1;
+//   tempEnd = end - tempEnd + tempEnd * d;
+//   const heightCnt = Math.floor((tempEnd - tempStart) / divider + 1);
+//   const startCnt = Math.floor(tempStart / divider - num);
+//   return {
+//     startPoint: topHeight + cellHeight * startCnt,
+//     height: cellHeight * heightCnt,
+//     colour: colour || "#ddd"
+//   };
+// };

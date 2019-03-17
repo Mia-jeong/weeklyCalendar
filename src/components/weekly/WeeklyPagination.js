@@ -26,18 +26,15 @@ const WeeklyPagination = props => {
   };
 
   return (
-    <div>
-      <div style={{ display: "inline-block", align: "center" }}>
-        <ArrowButton direction="double left" value={-1} flag="M" />
-        <ArrowButton direction="left" value={-7} flag="D" />
-        {dateRender()}
-        <ArrowButton direction="right" value={7} flag="D" />
-        <ArrowButton direction="double right" value={1} flag="M" />
-        <DateResetButton />
-      </div>
-      <div style={{ display: "inline-block", align: "right" }}>
-        <PrintButton />{" "}
-      </div>
+    <div style={{ display: "inline-block" }}>
+      <ArrowButton direction="double left" value={-1} flag="M" />
+      <ArrowButton direction="left" value={-7} flag="D" />
+      {dateRender()}
+      <ArrowButton direction="right" value={7} flag="D" />
+      <ArrowButton direction="double right" value={1} flag="M" />
+      <DateResetButton />
+
+      <PrintButton />
     </div>
   );
 };

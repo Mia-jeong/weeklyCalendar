@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
-import { dayReducer } from "./dateReducer";
+import { dayReducer, scheduleReducer } from "./dateReducer";
 
 export default combineReducers({
-  day: dayReducer
+  day: dayReducer,
+  scheduleList: scheduleReducer
 });
