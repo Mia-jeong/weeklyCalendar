@@ -17,7 +17,9 @@ export const renderInput = ({ input, label, flag, meta, type, width }) => {
         <div className="two fields">
           <div className="field">
             <input {...input} autoComplete="off" type={type} />
+            {renderError(meta)}
           </div>
+
           <div className="field">
             <button className="ui button">Search</button>
           </div>
@@ -25,7 +27,12 @@ export const renderInput = ({ input, label, flag, meta, type, width }) => {
       );
     }
 
-    return <input {...input} autoComplete="off" type={type} />;
+    return (
+      <React.Fragment>
+        <input {...input} autoComplete="off" type={type} />
+        {renderError(meta)}
+      </React.Fragment>
+    );
   };
   return (
     <div className={`${width} field`}>
@@ -42,6 +49,7 @@ export const renderSelect = ({ input, label, meta }) => {
       <select {...input} className="ui fluid search dropdown">
         <option>9:00</option>
       </select>
+      {renderError(meta)}
     </div>
   );
 };
@@ -51,6 +59,7 @@ export const renderTextArea = ({ input, label, meta, rows }) => {
     <div className="field">
       <label>{label}</label>
       <textarea rows={rows || ""} />
+      {renderError(meta)}
     </div>
   );
 };
