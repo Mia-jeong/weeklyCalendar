@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
+import { dateFormat } from "../../../utils/date";
 import {
   renderInput,
   renderSelect,
@@ -10,18 +11,12 @@ import {
 class ScheduleForm extends Component {
   render() {
     return (
-      <div className="fields">
-        <form
-          className="ui form error"
-          onSubmit={this.props.handleSubmit(onSubmit)}
-        >
-          <div className="six wide field">
-            <Field
-              component={renderInput}
-              name="date"
-              label="Date"
-              type="text"
-            />
+      <div className="ui segment sBox">
+        <form className="ui form " onSubmit={this.props.handleSubmit(onSubmit)}>
+          <h4 className="ui dividing header">
+            DATE: {dateFormat("/", this.props.date)}
+          </h4>
+          <div className="three fields">
             <Field component={renderSelect} name="start" label="Start" />
             <Field component={renderSelect} name="end" label="End" />
             <Field
@@ -29,6 +24,9 @@ class ScheduleForm extends Component {
               name="customer"
               label="Customer"
               flag={true}
+              onClick={() => {
+                alert("연구중");
+              }}
             />
           </div>
           <Field

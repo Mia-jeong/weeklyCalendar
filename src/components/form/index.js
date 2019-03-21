@@ -10,12 +10,27 @@ export const renderError = ({ error, touched }) => {
   }
 };
 
-export const renderInput = ({ input, label, flag, meta, type }) => {
+export const renderInput = ({ input, label, flag, meta, type, width }) => {
+  const renderHelper = () => {
+    if (flag) {
+      return (
+        <div className="two fields">
+          <div className="field">
+            <input {...input} autoComplete="off" type={type} />
+          </div>
+          <div className="field">
+            <button className="ui button">Search</button>
+          </div>
+        </div>
+      );
+    }
+
+    return <input {...input} autoComplete="off" type={type} />;
+  };
   return (
-    <div className="field">
+    <div className={`${width} field`}>
       <label>{label}</label>
-      <input {...input} autoComplete="off" type={type} />
-      {flag && <button className="ui button primary">Search</button>}
+      {renderHelper()}
     </div>
   );
 };
@@ -33,7 +48,7 @@ export const renderSelect = ({ input, label, meta }) => {
 
 export const renderTextArea = ({ input, label, meta, rows }) => {
   return (
-    <div class="field">
+    <div className="field">
       <label>{label}</label>
       <textarea rows={rows || ""} />
     </div>

@@ -10,10 +10,11 @@ class ScheduleCreate extends Component {
   };
 
   render() {
+    const { date, start } = this.props.match.params;
     return (
       <div>
-        <h3>Create Schedule</h3>
-        <ScheduleForm onSubmit={this.onSubmit} />
+        <h2>Create Schedule</h2>
+        <ScheduleForm onSubmit={this.onSubmit} date={date} start={start} />
       </div>
     );
   }

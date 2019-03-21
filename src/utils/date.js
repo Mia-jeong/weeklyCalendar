@@ -115,3 +115,11 @@ export const dateDiff = (day, day2, value, flag) => {
   }
   return day.diff(temp, "days");
 };
+
+export const dateFormat = (str, date) => {
+  if (date) {
+    return (
+      date.substr(0, 4) + str + date.substr(4, 2) + str + date.substr(6, 8)
+    );
+  } else return null;
+};

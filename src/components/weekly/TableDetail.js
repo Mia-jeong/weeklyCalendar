@@ -1,7 +1,7 @@
 import React from "react";
 import history from "../history";
 const TableDetail = props => {
-  const clickMethod = () => {
+  const onClick = () => {
     if (props.day) {
       let { fullDate } = props.day;
       history.push(`/index/create/${fullDate}/${props.id}`);
@@ -15,7 +15,7 @@ const TableDetail = props => {
     }
 
     return (
-      <td data-label="Day" onClick={clickMethod}>
+      <td data-label="Day" onClick={onClick}>
         {props.time}
       </td>
     );

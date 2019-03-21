@@ -42,9 +42,8 @@ class DayTable extends Component {
       return daySchedule.map(d => {
         return (
           <ScheduleCard
-            start={d.start}
-            end={d.end}
-            colour={d.colour}
+            fullDate={this.props.day.fullDate}
+            detail={d}
             key={d.start}
           />
         );

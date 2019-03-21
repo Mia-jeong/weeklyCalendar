@@ -52,6 +52,11 @@ td {
   align-items: center;
   -webkit-justify-content: center;
   justify-content: center;
+  max-width: 1500px;
+}
+
+.sBox {
+  max-width: 800px;
 }
 
 .initial {
@@ -87,6 +92,14 @@ td {
 
 .weeklyTr {
   height: 25px;
+}
+
+.cardFont {
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  font-weight: bold;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
 }
 
 .calendar-container,

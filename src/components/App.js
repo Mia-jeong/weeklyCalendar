@@ -9,7 +9,7 @@ import Week from "./weekly/Week";
 import Calendar from "./calendar";
 import CustomerList from "../components/customers/CustomerList";
 import ScheduleCreate from "./weekly/scheduleCRUD/ScheduleCreate";
-
+import ScheduleEdit from "./weekly/scheduleCRUD/ScheduleEdit";
 class App extends Component {
   componentDidMount() {
     this.props.fetchDay();
@@ -31,7 +31,12 @@ class App extends Component {
               <Route
                 exact
                 component={ScheduleCreate}
-                path="/index/create/:fullDate/:startDate"
+                path="/index/create/:date/:start"
+              />
+              <Route
+                exact
+                component={ScheduleEdit}
+                path="/index/edit/:date/:start"
               />
               <Route component={CustomerList} path="/index/customers" />
             </div>
