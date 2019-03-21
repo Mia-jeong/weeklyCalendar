@@ -1,4 +1,9 @@
-import { FETCH_DAY, FETCH_DAY_SCHEDULE } from "../actions/type";
+import {
+  FETCH_DAY,
+  FETCH_DAY_SCHEDULE,
+  CREATE_SCHEDULE,
+  EDIT_SCHEDULE
+} from "../actions/type";
 
 export const dayReducer = (state = {}, action) => {
   switch (action.type) {
@@ -10,10 +15,20 @@ export const dayReducer = (state = {}, action) => {
 };
 
 export const scheduleReducer = (state = {}, action) => {
-  const exampleList = dataExample();
+  const exampleList = dataExample(); //for test
   switch (action.type) {
     case FETCH_DAY_SCHEDULE:
       return { ...state, [action.payload]: exampleList[action.payload] };
+    case CREATE_SCHEDULE:
+      return {
+        ...state,
+        [action.payload.date]: { [action.payload.start]: action.payload }
+      };
+    case EDIT_SCHEDULE:
+      return {
+        ...state,
+        [action.payload.date]: { [action.payload.start]: action.payload }
+      };
     default:
       return state;
   }
@@ -23,34 +38,50 @@ const dataExample = () => {
   return {
     20190319: {
       9: {
-        startTime: 9,
-        endTime: 10.5,
+        start: 9,
+        end: 10.5,
         customer: "AAA",
         content: "blah blah",
-        colour: "#24B170"
+        colour: "#FAB8CB"
       },
       14: {
-        startTime: 14,
-        endTime: 15,
+        start: 14,
+        end: 15,
         customer: "BBB",
         content: "test",
-        colour: "#104E9B"
+        colour: "#B5D4DE"
       }
     },
     20190320: {
       10: {
-        startTime: 10,
-        endTime: 12,
+        start: 10,
+        end: 12,
         customer: "CCC",
         content: "test2",
-        colour: "#6A2780"
+        colour: "#CFD8C9"
       },
       18: {
-        startTime: 18,
-        endTime: 19,
+        start: 18,
+        end: 19,
         customer: "DDD",
         content: "test3",
-        colour: "#9B2548"
+        colour: "#CCCCCC"
+      }
+    },
+    20190322: {
+      12: {
+        start: 12,
+        end: 12.5,
+        customer: "AAA",
+        content: "blah blah",
+        colour: "#FFE1CF"
+      },
+      16: {
+        start: 16,
+        end: 18,
+        customer: "BBB",
+        content: "test",
+        colour: "#B5D4DE"
       }
     }
   };

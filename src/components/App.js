@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Router, Route, Switch } from "react-router-dom";
+import history from "./history";
+import { fetchDay } from "../actions/dateActions";
+
 import Header from "./Header";
 import Week from "./weekly/Week";
-import { fetchDay } from "../actions/dateActions";
+import Calendar from "./calendar";
+import CustomerList from "../components/customers/CustomerList";
+import ScheduleCreate from "./weekly/scheduleCRUD/ScheduleCreate";
 
 class App extends Component {
   componentDidMount() {
@@ -10,15 +16,28 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <Header />
-        <div className="box">
-          <div className="initial" />
-          <div className="calendarBox">
-            <Week />
+      <Router history={history}>
+        <div>
+          <Route component={Header} path="/index" />
+
+          <Route component={null} path="/login" />
+
+          <div className="box">
+            <div className="initial">
+              <Route component={Calendar} exact path="/index" />
+            </div>
+            <div className="calendarBox">
+              <Route component={Week} path="/index" exact />
+              <Route
+                exact
+                component={ScheduleCreate}
+                path="/index/create/:fullDate/:startDate"
+              />
+              <Route component={CustomerList} path="/index/customers" />
+            </div>
           </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }

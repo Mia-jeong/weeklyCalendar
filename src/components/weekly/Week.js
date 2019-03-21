@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Daytable from "./DayTable";
+import { fetchDay } from "../../actions/dateActions";
 import WeeklyPagination from "./WeeklyPagination";
 import * as DateUtil from "../../utils/date";
 
 import { mapStateToPropsForWeek } from "../../utils/state";
 class Week extends Component {
-  componentDidMount() {}
+  componentWillUnmount() {
+    this.props.fetchDay();
+  }
   weekRender() {
     if (this.props.standardDay) {
       const weekList = DateUtil.weekList(
@@ -41,4 +44,7 @@ class Week extends Component {
   }
 }
 
-export default connect(mapStateToPropsForWeek)(Week);
+export default connect(
+  mapStateToPropsForWeek,
+  { fetchDay }
+)(Week);

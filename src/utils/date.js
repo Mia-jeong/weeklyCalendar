@@ -54,6 +54,17 @@ export const getDateInfo = (fullDateDash, value, flag) => {
   };
 };
 
+export const getCalendarConfig = {
+  weekdays: moment.weekdays(),
+  weekdaysShort: moment.weekdaysShort(),
+  weedaysKr: ["일", "월", "화", "수", "목", "금", "토"],
+  months: moment.months()
+};
+
+export const getCalendarInfo = (year, month) => {
+  const dateContext = getDateInfo();
+};
+
 export const timeZone = (date, timeZone = "Asia/Seoul") => {
   var nowDate = moment(date)
     .tz(timeZone)

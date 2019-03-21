@@ -38,17 +38,14 @@ class DayTable extends Component {
   }
   scheduleCardRender() {
     const { daySchedule } = this.props;
-
     if (daySchedule) {
-      console.log("daySchedule", daySchedule);
       return daySchedule.map(d => {
-        console.log(d);
         return (
           <ScheduleCard
-            start={d.startTime}
-            end={d.endTime}
+            start={d.start}
+            end={d.end}
             colour={d.colour}
-            key={d.startTime}
+            key={d.start}
           />
         );
       });
@@ -61,10 +58,10 @@ class DayTable extends Component {
       <div style={this.divStyle()}>
         {this.scheduleCardRender()}
 
-        <table className="ui calendarTable">
+        <table className="ui weeklyTable">
           <thead>
             <tr>
-              <th className={`calendarTr ${this.props.day.colourClass}`}>
+              <th className={`weeklyTr ${this.props.day.colourClass}`}>
                 {this.props.day.dayNameEng} / {this.props.day.date}
               </th>
             </tr>
@@ -78,7 +75,6 @@ class DayTable extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   const daySchedule = state.scheduleList[ownProps.day.fullDate];
-  const abc = daySchedule ? Object.values(daySchedule) : [];
 
   return { daySchedule: daySchedule ? Object.values(daySchedule) : [] };
 };

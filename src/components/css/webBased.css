@@ -1,47 +1,47 @@
-.calendarTable thead tr {
+.weeklyTable thead tr {
   height: 40px;
 }
 td:hover {
   background: #cce2ff;
 }
 
-.calendarTable tr.red {
+.weeklyTable tr.red {
   background: #fff6f6 !important;
   color: #9f3a38 !important;
 }
-.calendarTable tr.today {
+.weeklyTable tr.today {
   background: #fcfff5 !important;
   color: #2c662d !important;
   -webkit-box-shadow: 0 0 0 #a3c293 inset;
   box-shadow: 0 0 0 #a3c293 inset;
 }
 
-.calendarTable tr.blue {
+.weeklyTable tr.blue {
   background-color: #f8ffff;
   color: #276f86;
 }
 
-.calendarTable th.blue {
+.weeklyTable th.blue {
   background-color: #f8ffff;
   color: #276f86;
 }
 
-.calendarTable th.red {
+.weeklyTable th.red {
   background: #fff6f6 !important;
   color: #9f3a38 !important;
 }
 
-.calendarTable th.today {
+.weeklyTable th.today {
   background: #fcfff5 !important;
   color: #246425 !important;
 }
 
-.calendarTable th {
+.weeklyTable th {
   background: #f9fafb !important;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.calendarTable th,
+.weeklyTable th,
 td {
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 }
@@ -67,7 +67,7 @@ td {
   flex: 3;
 }
 
-.calendarTable {
+.weeklyTable {
   width: 100%;
   background: #fff;
   margin: 1em 0;
@@ -85,6 +85,113 @@ td {
   border-collapse: collapse;
 }
 
-.calendarTr {
+.weeklyTr {
   height: 25px;
+}
+
+.calendar-container,
+.calendar,
+.calendar-header,
+td,
+tr {
+  padding: 0;
+  margin: 0;
+}
+
+.calendar-container {
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  margin: 10px;
+}
+
+.calendar {
+  background-color: white;
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.calendar-header {
+  border-bottom: 1px dashed skyblue;
+  font-size: 1.6em;
+}
+
+.calendar-header td {
+  border-spacing: 0;
+  padding-left: 5px;
+}
+
+.day,
+.empty-slot,
+.week-day {
+  text-align: center;
+  height: 40px;
+}
+
+.week-day {
+  font-size: 0.8em;
+}
+
+.day {
+  font-size: 0.8em;
+}
+
+.day {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.current-day {
+  background-color: #4285f4;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 2%;
+  color: white;
+}
+.selected-day {
+  background-color: yellow;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 2%;
+  color: black;
+}
+
+.month-popup {
+  position: absolute;
+  padding: 5px;
+  background: white;
+  border: 2px solid skyblue;
+}
+
+.month-popup div {
+  padding: 0.3em;
+}
+
+.nav-month {
+  position: absolute;
+  top: 0.6em;
+  font-size: 0.6em;
+  right: 3px;
+}
+
+.prev {
+}
+
+.next {
+}
+
+.editor-year {
+  max-width: 3.6em;
+}
+
+.label-month,
+.label-year {
+  font-size: 0.6em;
+}
+
+.label-month {
+  cursor: pointer;
 }

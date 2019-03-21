@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-
+import { Link } from "react-router-dom";
 class Header extends Component {
   render() {
     return (
       <div className="ui menu">
-        <a className="header item" href="/">
+        <Link to="/index" className="header item">
           Weekly
-        </a>
-        <a className="item" href="/">
+        </Link>
+        <Link to="/index/customers" className="item">
           Customers
-        </a>
+        </Link>
       </div>
     );
   }
