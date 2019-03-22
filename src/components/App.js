@@ -5,11 +5,11 @@ import history from "./history";
 import { fetchDay } from "../actions/dateActions";
 
 import Header from "./Header";
-import Week from "./weekly/Week";
+import Week from "./calendar/weekly/Week";
 import Calendar from "./calendar";
-import CustomerList from "../components/customers/CustomerList";
-import ScheduleCreate from "./weekly/scheduleCRUD/ScheduleCreate";
-import ScheduleEdit from "./weekly/scheduleCRUD/ScheduleEdit";
+import CustomerList from "./customers/CustomerList";
+import ScheduleCreate from "./calendar/schedule/ScheduleCreate";
+import ScheduleEdit from "./calendar/schedule/ScheduleEdit";
 class App extends Component {
   componentDidMount() {
     this.props.fetchDay();

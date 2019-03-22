@@ -17,7 +17,8 @@ class ScheduleCreate extends Component {
     const { date, start } = this.props.match.params;
     const initials = {
       start: start,
-      end: start
+      end: start,
+      colour: "01"
     };
     return (
       <div>

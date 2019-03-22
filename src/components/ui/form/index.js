@@ -3,9 +3,10 @@ import React from "react";
 export const renderError = ({ error, touched }) => {
   if (touched && error) {
     return (
-      <div className="ui error message">
-        <div className="header">{error}</div>
-      </div>
+      <div class="ui pointing red basic label">{error}</div>
+      // <div className="ui error message">
+      //   <div className="header">{error}</div>
+      // </div>
     );
   }
 };

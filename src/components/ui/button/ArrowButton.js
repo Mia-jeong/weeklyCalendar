@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { fetchDay } from "../../../actions/dateActions";
+import { mapStateToPropsForWeek } from "../../../utils/state";
 
-import { fetchDay } from "../../actions/dateActions";
-
-import { mapStateToPropsForWeek } from "../../utils/state";
 class ArrowButton extends Component {
   onClick = () => {
     this.props.fetchDay(

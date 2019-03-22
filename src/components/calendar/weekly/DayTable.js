@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchDaySchedule } from "../../actions/dateActions";
+import { fetchDaySchedule } from "../../../actions/dateActions";
 import TableDetail from "./TableDetail";
 import ScheduleCard from "./ScheduleCard";
 class DayTable extends Component {

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 
-import "./components/css/webBased.css";
+import "./components/ui/css/webBased.css";
 import thunk from "redux-thunk";
 import reducers from "./reducers";
 import App from "./components/App";

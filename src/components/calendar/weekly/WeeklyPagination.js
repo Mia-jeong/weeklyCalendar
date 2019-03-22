@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import ArrowButton from "../button/ArrowButton";
-import DateResetButton from "../button/DateResetButton";
-import PrintButton from "../button/PrintButton";
-import { mapStateToPropsForWeek } from "../../utils/state";
+import ArrowButton from "../../ui/button/ArrowButton";
+import DateResetButton from "../../ui/button/DateResetButton";
+import PrintButton from "../../ui/button/PrintButton";
+import { mapStateToPropsForWeek } from "../../../utils/state";
 // import * as DateUtil from "../../utils/date";
 
 const WeeklyPagination = props => {

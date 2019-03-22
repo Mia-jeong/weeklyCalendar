@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import { fetchDay } from "../../actions/dateActions";
+import { fetchDay } from "../../../actions/dateActions";
 const DateResetButton = props => {
   const onClick = () => {
     props.fetchDay();

@@ -1,6 +1,6 @@
 import React from "react";
-import * as TableUtil from "../../utils/table";
-import history from "../history";
+import * as TableUtil from "../../../utils/table";
+import history from "../../history";
 const ScheduleCard = props => {
   const { start, end, customer, title } = props.detail;
   const onClick = () => {

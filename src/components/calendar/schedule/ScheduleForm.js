@@ -7,7 +7,7 @@ import {
   renderInputWithButton,
   renderSelect,
   renderTextArea
-} from "../../form";
+} from "../../ui/form";
 
 class ScheduleForm extends Component {
   optionTimeRender() {
