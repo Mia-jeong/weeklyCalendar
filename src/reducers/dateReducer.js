@@ -15,19 +15,26 @@ export const dayReducer = (state = {}, action) => {
 };
 
 export const scheduleReducer = (state = {}, action) => {
+  // [action.payload]: exampleList[action.payload]
   const exampleList = dataExample(); //for test
   switch (action.type) {
     case FETCH_DAY_SCHEDULE:
-      return { ...state, [action.payload]: exampleList[action.payload] };
+      return { ...state };
     case CREATE_SCHEDULE:
       return {
         ...state,
-        [action.payload.date]: { [action.payload.start]: action.payload }
+        [action.payload.date]: {
+          ...state[action.payload.date],
+          [action.payload.start]: action.payload
+        }
       };
     case EDIT_SCHEDULE:
       return {
         ...state,
-        [action.payload.date]: { [action.payload.start]: action.payload }
+        [action.payload.date]: {
+          ...state[action.payload.date],
+          [action.payload.start]: action.payload
+        }
       };
     default:
       return state;

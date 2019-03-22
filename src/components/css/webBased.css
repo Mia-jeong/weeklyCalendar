@@ -94,12 +94,13 @@ td {
   height: 25px;
 }
 
-.cardFont {
+.scheduleCard {
   padding-top: 0.5em;
   padding-left: 0.5em;
   font-weight: bold;
   font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
   font-size: 0.8em;
+  color: white;
 }
 
 .calendar-container,

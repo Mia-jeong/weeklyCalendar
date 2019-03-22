@@ -1,3 +1,4 @@
+import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createSchedule } from "../../../actions/dateActions";
@@ -6,15 +7,27 @@ class ScheduleCreate extends Component {
   componentDidMount() {}
 
   onSubmit = formValues => {
-    this.props.createSchedule(formValues);
+    this.props.createSchedule({
+      ...formValues,
+      date: this.props.match.params.date
+    });
   };
 
   render() {
     const { date, start } = this.props.match.params;
+    const initials = {
+      start: start,
+      end: start
+    };
     return (
       <div>
         <h2>Create Schedule</h2>
-        <ScheduleForm onSubmit={this.onSubmit} date={date} start={start} />
+        <ScheduleForm
+          onSubmit={this.onSubmit}
+          date={date}
+          start={start}
+          initialValues={initials}
+        />
       </div>
     );
   }

@@ -1,3 +1,4 @@
+import _ from "lodash";
 /*
 테이블의 각각 cell높이에 맞게 카드 시작 포인트와 높이를 계산해주는 함수 
 param 
@@ -17,6 +18,14 @@ num : for substraction
 topheight: the height of th 
 cellheight : the height of each cell
 */
+export const coloursList = [
+  { colourId: "01", colour: "orange", match: "#ED553B" },
+  { colourId: "02", colour: "yellow", match: "#F2B134" },
+  { colourId: "03", colour: "green", match: "#47AB6C" },
+  { colourId: "04", colour: "blue", match: "#0894A1" },
+  { colourId: "05", colour: "indigo", match: "#112F41" }
+];
+
 export const cellHeightCaculator = (
   { start, end, colour },
   divider,
@@ -26,11 +35,14 @@ export const cellHeightCaculator = (
 ) => {
   const heightCnt = (end - start) / divider + 1;
   const startCnt = start / divider - num;
+  const colourObject = _.chain(coloursList)
+    .keyBy("colourId")
+    .value();
 
   return {
     startPoint: topHeight + cellHeight * startCnt,
     height: cellHeight * heightCnt,
-    colour: colour || "#ddd"
+    colour: colourObject[colour]["match"] || "#ddd"
   };
 };
 

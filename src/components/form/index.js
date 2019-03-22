@@ -10,47 +10,55 @@ export const renderError = ({ error, touched }) => {
   }
 };
 
-export const renderInput = ({ input, label, flag, meta, type, width }) => {
-  const renderHelper = () => {
-    if (flag) {
-      return (
-        <div className="two fields">
-          <div className="field">
-            <input {...input} autoComplete="off" type={type} />
-            {renderError(meta)}
-          </div>
-
-          <div className="field">
-            <button className="ui button">Search</button>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <React.Fragment>
-        <input {...input} autoComplete="off" type={type} />
-        {renderError(meta)}
-      </React.Fragment>
-    );
-  };
+export const renderInputWithButton = ({ input, label, meta, type, width }) => {
+  const className = ` ${width} field ${
+    meta.error && meta.touched ? "error" : ""
+  }`;
   return (
-    <div className={`${width} field`}>
+    <div className={className}>
       <label>{label}</label>
-      {renderHelper()}
+
+      <div className="field">
+        <div className="ui action input">
+          <input {...input} autoComplete="off" type={type} />
+          <button className="ui icon button">
+            <i className="search icon" />
+          </button>
+        </div>
+
+        {renderError(meta)}
+      </div>
     </div>
   );
 };
 
-export const renderSelect = ({ input, label, meta }) => {
+export const renderInput = ({ input, label, meta, type, width }) => {
+  const className = ` ${width} field ${
+    meta.error && meta.touched ? "error" : ""
+  }`;
   return (
-    <div className="field">
+    <div className={className}>
       <label>{label}</label>
-      <select {...input} className="ui fluid search dropdown">
-        <option>9:00</option>
-      </select>
+      <input {...input} autoComplete="off" type={type} />
       {renderError(meta)}
     </div>
+  );
+};
+
+export const renderSelect = ({ input, label, meta, options, width }) => {
+  const className = ` ${width} field ${
+    meta.error && meta.touched ? "error" : ""
+  }`;
+  return (
+    <React.Fragment>
+      <div className={className}>
+        <label>{label}</label>
+        <select {...input} className="ui fluid search dropdown">
+          {options}
+        </select>
+        {renderError(meta)}
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -58,7 +66,7 @@ export const renderTextArea = ({ input, label, meta, rows }) => {
   return (
     <div className="field">
       <label>{label}</label>
-      <textarea rows={rows || ""} />
+      <textarea {...input} rows={rows || ""} />
       {renderError(meta)}
     </div>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import * as TableUtil from "../../utils/table";
 import history from "../history";
 const ScheduleCard = props => {
-  const { start, end, customer } = props.detail;
+  const { start, end, customer, title } = props.detail;
   const onClick = () => {
     let { fullDate } = props;
     history.push(`/index/edit/${fullDate}/${start}`);
@@ -47,9 +47,9 @@ const ScheduleCard = props => {
   };
   return (
     <div style={styleConfig} onClick={onClick}>
-      <div className="cardFont">
+      <div className="scheduleCard">
         {timeRender()} <br />
-        {customer} / 가나다라
+        {customer} / {title}
       </div>
     </div>
   );
