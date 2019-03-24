@@ -1,53 +1,90 @@
-.weeklyTable thead tr {
+.basicTable thead tr {
   height: 40px;
 }
 td:hover {
   background: #cce2ff;
 }
 
-.weeklyTable tr.red {
+.basicTable tr.red {
   background: #fff6f6 !important;
   color: #9f3a38 !important;
 }
-.weeklyTable tr.today {
+.basicTable tr.today {
   background: #fcfff5 !important;
   color: #2c662d !important;
   -webkit-box-shadow: 0 0 0 #a3c293 inset;
   box-shadow: 0 0 0 #a3c293 inset;
 }
 
-.weeklyTable tr.blue {
+.basicTable tr.blue {
   background-color: #f8ffff;
   color: #276f86;
 }
 
-.weeklyTable th.blue {
+.basicTable th.blue {
   background-color: #f8ffff;
   color: #276f86;
 }
 
-.weeklyTable th.red {
+.basicTable th.red {
   background: #fff6f6 !important;
   color: #9f3a38 !important;
 }
 
-.weeklyTable th.today {
+.basicTable th.today {
   background: #fcfff5 !important;
   color: #246425 !important;
 }
 
-.weeklyTable th {
+.basicTable th {
   background: #f9fafb !important;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.weeklyTable th,
+.weeklyTr {
+  height: 25px;
+}
+
+.basicTable th,
 td {
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 }
+
+.basicTable {
+  width: 100%;
+  background: #fff;
+  margin: 1em 0;
+  white-space: nowrap;
+  /* border: 1px solid rgba(34, 36, 38, 0.15); */
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 0.28571429rem;
+  text-align: left;
+  color: rgba(0, 0, 0, 0.87);
+  /* border-collapse: separate; */
+  border-spacing: 0;
+  font-size: 0.8em;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-collapse: collapse;
+}
+
+.basicTable.wide tr {
+  height: 40px;
+}
+
+.scheduleCard {
+  padding-top: 0.5em;
+  padding-left: 0.5em;
+  font-weight: bold;
+  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 0.8em;
+  color: white;
+}
+
 .box {
   display: -webkit-flex;
   display: flex;
+  flex-wrap: nowrap;
   -webkit-align-items: center;
   align-items: center;
   -webkit-justify-content: center;
@@ -71,38 +108,6 @@ td {
   -webkit-flex: 3;
   flex: 3;
 }
-
-.weeklyTable {
-  width: 100%;
-  background: #fff;
-  margin: 1em 0;
-  white-space: nowrap;
-  /* border: 1px solid rgba(34, 36, 38, 0.15); */
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  border-radius: 0.28571429rem;
-  text-align: left;
-  color: rgba(0, 0, 0, 0.87);
-  /* border-collapse: separate; */
-  border-spacing: 0;
-  font-size: 0.8em;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
-  border-collapse: collapse;
-}
-
-.weeklyTr {
-  height: 25px;
-}
-
-.scheduleCard {
-  padding-top: 0.5em;
-  padding-left: 0.5em;
-  font-weight: bold;
-  font-family: Lato, "Helvetica Neue", Arial, Helvetica, sans-serif;
-  font-size: 0.8em;
-  color: white;
-}
-
 .calendar-container,
 .calendar,
 .calendar-header,

@@ -57,7 +57,7 @@ class DayTable extends Component {
       <div style={this.divStyle()}>
         {this.scheduleCardRender()}
 
-        <table className="ui weeklyTable">
+        <table className="ui basicTable">
           <thead>
             <tr>
               <th className={`weeklyTr ${this.props.day.colourClass}`}>

@@ -4,18 +4,22 @@ const CustomerList = props => {
   return (
     <div>
       <div>
-        <table className="ui calendarTable">
+        <table className="ui basicTable wide">
           <thead>
             <tr>
               <th>Name</th>
               <th>Phone</th>
               <th>Birth</th>
+              <th>Date</th>
+              <th>Last visited</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>Kim</td>
               <td>010-1234-1234</td>
+              <td>2000/01/01</td>
+              <td>2000/01/01</td>
               <td>2000/01/01</td>
             </tr>
           </tbody>

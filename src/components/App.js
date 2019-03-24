@@ -5,8 +5,9 @@ import history from "./history";
 import { fetchDay } from "../actions/dateActions";
 
 import Header from "./Header";
+import Login from "../components/auth/LogIn";
 import Week from "./calendar/weekly/Week";
-import Calendar from "./calendar";
+import Calendar from "./calendar/month";
 import CustomerList from "./customers/CustomerList";
 import ScheduleCreate from "./calendar/schedule/ScheduleCreate";
 import ScheduleEdit from "./calendar/schedule/ScheduleEdit";
@@ -20,7 +21,7 @@ class App extends Component {
         <div>
           <Route component={Header} path="/index" />
 
-          <Route component={null} path="/login" />
+          <Route component={Login} path="/" exact />
 
           <div className="box">
             <div className="initial">

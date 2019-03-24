@@ -15,9 +15,10 @@ class ScheduleCreate extends Component {
 
   render() {
     const { date, start } = this.props.match.params;
+    const end = parseFloat(start) + 1.5;
     const initials = {
       start: start,
-      end: start,
+      end: end > 20 ? 20 : end,
       colour: "01"
     };
     return (

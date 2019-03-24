@@ -2,12 +2,7 @@ import React from "react";
 
 export const renderError = ({ error, touched }) => {
   if (touched && error) {
-    return (
-      <div class="ui pointing red basic label">{error}</div>
-      // <div className="ui error message">
-      //   <div className="header">{error}</div>
-      // </div>
-    );
+    return <div className="ui pointing red basic label">{error}</div>;
   }
 };
 
@@ -68,7 +63,6 @@ export const renderTextArea = ({ input, label, meta, rows }) => {
     <div className="field">
       <label>{label}</label>
       <textarea {...input} rows={rows || ""} />
-      {renderError(meta)}
     </div>
   );
 };
