@@ -1,28 +1,5 @@
 import moment from "moment";
 import "moment-timezone";
-// export const getDateInfo = increment => {
-//   let tday = moment();
-
-//   if (increment) tday = tday.add(increment, "day");
-//   const day = tday.format("d");
-//   const date = tday.format("DD");
-//   const fullYear = tday.format("YYYY");
-//   const month = tday.format("M");
-//   const dayNmKr = ["일", "월", "화", "수", "목", "금", "토"];
-
-//   return {
-//     date: date,
-//     day: day,
-//     fullYear: fullYear,
-//     month: month,
-//     colourClass: (increment === 0 && "today") || (day === "0" && "red") || "",
-//     increment: increment,
-//     dayNameEng: tday.format("ddd"),
-//     dayNameKr: dayNmKr[day],
-//     fullDate: tday.format("YYYYMMDD"),
-//     fullDateDash: tday.format("YYYY-MM-DD")
-//   };
-// };
 
 export const getDateInfo = (fullDateDash, value, flag) => {
   let tday = timeZone();
@@ -50,7 +27,9 @@ export const getDateInfo = (fullDateDash, value, flag) => {
     dayNameEng: tday.format("ddd"),
     dayNameKr: dayNmKr[day],
     fullDate: tday.format("YYYYMMDD"),
-    fullDateDash: tday.format("YYYY-MM-DD")
+    fullDateDash: tday.format("YYYY-MM-DD"),
+    firstDayOfMonth: tday.startOf("month").format("d"),
+    lastDayOfMonth: tday.daysInMonth()
   };
 };
 
@@ -61,8 +40,13 @@ export const getCalendarConfig = {
   months: moment.months()
 };
 
-export const getCalendarInfo = (year, month) => {
-  const dateContext = getDateInfo();
+export const getCalendarInfo = move => {
+  const day = timeZone();
+
+  return {
+    start: day.startOf("month"),
+    end: day.endOf("month")
+  };
 };
 
 export const timeZone = (date, timeZone = "Asia/Seoul") => {

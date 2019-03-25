@@ -17,7 +17,6 @@ export const dayReducer = (state = {}, action) => {
 };
 
 export const scheduleReducer = (state = {}, action) => {
-  const exampleList = dataExample(); //for test
   switch (action.type) {
     case FETCH_DAY_SCHEDULE:
       return { ...state };

@@ -35,7 +35,7 @@ const ScheduleCard = props => {
     return startTemp + " - " + endTemp;
   };
   return (
-    <div style={styleConfig} onClick={onClick}>
+    <div style={styleConfig} onClick={onClick} draggable>
       <div className="scheduleCard">
         {timeSetting()} <br />
         {customer} / {title}

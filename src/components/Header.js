@@ -10,6 +10,9 @@ class Header extends Component {
         <Link to="/index/customers" className="item">
           Customers
         </Link>
+        <Link to="/" className="ui right floated item">
+          <i className="power off icon" />
+        </Link>
       </div>
     );
   }

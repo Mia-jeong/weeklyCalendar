@@ -9,10 +9,6 @@ import { mapStateToPropsForWeek } from "../../../utils/state";
 const WeeklyPagination = props => {
   const { standardDay } = props;
 
-  // const monthDiffBefore = DateUtil.dateDiff(null, standardDay, -1, "M");
-
-  // const monthDiffAfter = DateUtil.dateDiff(null, standardDay, 1, "M");
-
   const dateRender = () => {
     if (standardDay) {
       const { fullYear, month } = standardDay;
