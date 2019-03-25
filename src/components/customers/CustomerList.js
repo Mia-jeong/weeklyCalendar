@@ -2,9 +2,9 @@ import React from "react";
 
 const CustomerList = props => {
   return (
-    <div>
+    <div className="formBox">
       <div>
-        <table className="ui basicTable wide">
+        <table className="ui table">
           <thead>
             <tr>
               <th>Name</th>

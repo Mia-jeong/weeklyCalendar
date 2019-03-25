@@ -3,7 +3,8 @@ import {
   FETCH_DAY,
   FETCH_DAY_SCHEDULE,
   CREATE_SCHEDULE,
-  EDIT_SCHEDULE
+  EDIT_SCHEDULE,
+  DELETE_SCHEDULE
 } from "./type";
 import * as DateUtill from "../utils/date";
 
@@ -23,5 +24,10 @@ export const createSchedule = formValues => dispatch => {
 
 export const editSchedule = formValues => dispatch => {
   dispatch({ type: EDIT_SCHEDULE, payload: formValues });
+  history.push("/index");
+};
+
+export const deleteSchedule = (date, start) => dispatch => {
+  dispatch({ type: DELETE_SCHEDULE, payload: { date, start } });
   history.push("/index");
 };

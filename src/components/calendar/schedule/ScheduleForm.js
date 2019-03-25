@@ -49,55 +49,49 @@ class ScheduleForm extends Component {
 
   render() {
     return (
-      <div className="ui segment sBox">
-        <form
-          className="ui form error"
-          onSubmit={this.props.handleSubmit(this.onSubmit)}
-        >
-          <h4 className="ui dividing header">
-            DATE: {dateFormat("/", this.props.date)}
-          </h4>
-          <div className="two fields">
-            <Field
-              name="start"
-              component={renderSelect}
-              label="Start"
-              options={this.optionTimeRender()}
-            />
-            <Field
-              name="end"
-              component={renderSelect}
-              label="End"
-              options={this.optionTimeRender()}
-            />
-          </div>
-          <div className="two fields">
-            <Field
-              name="customer"
-              component={renderInputWithButton}
-              label="Customer"
-              onClick={() => {
-                alert("연구중");
-              }}
-            />
-
-            <Field
-              name="colour"
-              component={renderSelect}
-              label="Colour"
-              options={this.optionColourRender()}
-            />
-          </div>
+      <form
+        className="ui form error"
+        onSubmit={this.props.handleSubmit(this.onSubmit)}
+      >
+        <h4 className="ui dividing header">
+          DATE: {dateFormat("/", this.props.date)}
+        </h4>
+        <div className="two fields">
           <Field
-            name="title"
-            component={renderInput}
-            label="Title"
-            type="text"
+            name="start"
+            component={renderSelect}
+            label="Start"
+            options={this.optionTimeRender()}
           />
-          <Field name="contents" component={renderTextArea} label="Contents" />
-          <button className="ui primary button">Submit</button>
-        </form>
-      </div>
+          <Field
+            name="end"
+            component={renderSelect}
+            label="End"
+            options={this.optionTimeRender()}
+          />
+        </div>
+        <div className="two fields">
+          <Field
+            name="customer"
+            component={renderInputWithButton}
+            label="Customer"
+            onClick={() => {
+              alert("연구중");
+            }}
+          />
+
+          <Field
+            name="colour"
+            component={renderSelect}
+            label="Colour"
+            options={this.optionColourRender()}
+          />
+        </div>
+        <Field name="title" component={renderInput} label="Title" type="text" />
+        <Field name="contents" component={renderTextArea} label="Contents" />
+
+        <button className="ui primary button">Submit</button>
+      </form>
     );
   }
 }

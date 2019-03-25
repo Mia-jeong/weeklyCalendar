@@ -1,8 +1,10 @@
+import _ from "lodash";
 import {
   FETCH_DAY,
   FETCH_DAY_SCHEDULE,
   CREATE_SCHEDULE,
-  EDIT_SCHEDULE
+  EDIT_SCHEDULE,
+  DELETE_SCHEDULE
 } from "../actions/type";
 
 export const dayReducer = (state = {}, action) => {
@@ -15,7 +17,6 @@ export const dayReducer = (state = {}, action) => {
 };
 
 export const scheduleReducer = (state = {}, action) => {
-  // [action.payload]: exampleList[action.payload]
   const exampleList = dataExample(); //for test
   switch (action.type) {
     case FETCH_DAY_SCHEDULE:
@@ -36,6 +37,9 @@ export const scheduleReducer = (state = {}, action) => {
           [action.payload.start]: action.payload
         }
       };
+    case DELETE_SCHEDULE:
+      const { date, start } = action.payload;
+      return _.omit(state, `${date}[${start}]`);
     default:
       return state;
   }

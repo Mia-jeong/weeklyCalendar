@@ -70,6 +70,8 @@ td {
 
 .basicTable.wide tr {
   height: 40px;
+  min-width: 80px;
+  max-width: 130px;
 }
 
 .scheduleCard {
@@ -96,12 +98,23 @@ td {
   max-width: 800px;
 }
 
+.formBox {
+  max-width: 800px;
+}
 .initial {
   -webkit-flex: initial;
   flex: initial;
   width: 400px;
   min-width: 300px;
   background-color: "red";
+}
+
+.loginBox {
+  height: 100vh;
+}
+
+.scheduleDetail tr {
+  max-width: 800px;
 }
 
 .calendarBox {

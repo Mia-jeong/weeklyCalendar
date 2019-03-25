@@ -10,7 +10,9 @@ import Week from "./calendar/weekly/Week";
 import Calendar from "./calendar/month";
 import CustomerList from "./customers/CustomerList";
 import ScheduleCreate from "./calendar/schedule/ScheduleCreate";
+import ScheduleDetail from "./calendar/schedule/ScheduleDetail";
 import ScheduleEdit from "./calendar/schedule/ScheduleEdit";
+import ScheduleDelete from "./calendar/schedule/ScheduleDelete";
 class App extends Component {
   componentDidMount() {
     this.props.fetchDay();
@@ -19,15 +21,15 @@ class App extends Component {
     return (
       <Router history={history}>
         <div>
-          <Route component={Header} path="/index" />
-
-          <Route component={Login} path="/" exact />
-
-          <div className="box">
-            <div className="initial">
-              <Route component={Calendar} exact path="/index" />
+          <div className="ui grid">
+            <div className="sixteen wide column">
+              <Route component={Header} path="/index" />
+              <Route component={Login} path="/" exact />
             </div>
-            <div className="calendarBox">
+            <div className="four wide column">
+              <Route component={Calendar} path="/index" />
+            </div>
+            <div className="twelve wide column">
               <Route component={Week} path="/index" exact />
               <Route
                 exact
@@ -36,8 +38,18 @@ class App extends Component {
               />
               <Route
                 exact
+                component={ScheduleDetail}
+                path="/index/detail/:date/:start"
+              />
+              <Route
+                exact
                 component={ScheduleEdit}
                 path="/index/edit/:date/:start"
+              />
+              <Route
+                exact
+                component={ScheduleDelete}
+                path="/index/delete/:date/:start"
               />
               <Route component={CustomerList} path="/index/customers" />
             </div>

@@ -1,8 +1,8 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createSchedule } from "../../../actions/dateActions";
 import ScheduleForm from "./ScheduleForm";
+import Card from "../../ui/form/Card";
 class ScheduleCreate extends Component {
   componentDidMount() {}
 
@@ -22,15 +22,14 @@ class ScheduleCreate extends Component {
       colour: "01"
     };
     return (
-      <div>
-        <h2>Create Schedule</h2>
+      <Card label="Create Schedule">
         <ScheduleForm
           onSubmit={this.onSubmit}
           date={date}
           start={start}
           initialValues={initials}
         />
-      </div>
+      </Card>
     );
   }
 }

@@ -123,3 +123,16 @@ export const dateFormat = (str, date) => {
     );
   } else return null;
 };
+
+export const timeRender = (time, str) => {
+  let timeTemp = time;
+
+  if (timeTemp % 1 === 0.5) {
+    timeTemp = timeTemp - 0.5 + ":30";
+  }
+  if (time >= 12) {
+    timeTemp += ` ${str}`;
+  }
+
+  return timeTemp;
+};

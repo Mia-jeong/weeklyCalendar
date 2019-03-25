@@ -1,11 +1,12 @@
 import React from "react";
 import * as TableUtil from "../../../utils/table";
+import { timeRender } from "../../../utils/date";
 import history from "../../history";
 const ScheduleCard = props => {
   const { start, end, customer, title } = props.detail;
   const onClick = () => {
     let { fullDate } = props;
-    history.push(`/index/edit/${fullDate}/${start}`);
+    history.push(`/index/detail/${fullDate}/${start}`);
   };
 
   const { startPoint, height, colour } = TableUtil.cellHeightCaculator(
@@ -27,28 +28,16 @@ const ScheduleCard = props => {
     borderRadius: "5px"
   };
 
-  const timeRender = () => {
-    let startTemp = start;
-    let endTemp = end;
-    if (startTemp % 1 === 0.5) {
-      startTemp = startTemp - 0.5 + ":30";
-    }
-    if (start >= 12) {
-      startTemp += " p";
-    }
-    if (endTemp % 1 === 0.5) {
-      endTemp = endTemp - 0.5 + ":30";
-    }
+  const timeSetting = () => {
+    let startTemp = timeRender(start, "p");
+    let endTemp = timeRender(end, "p");
 
-    if (end >= 12) {
-      endTemp += " p";
-    }
     return startTemp + " - " + endTemp;
   };
   return (
     <div style={styleConfig} onClick={onClick}>
       <div className="scheduleCard">
-        {timeRender()} <br />
+        {timeSetting()} <br />
         {customer} / {title}
       </div>
     </div>
