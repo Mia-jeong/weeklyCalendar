@@ -155,7 +155,8 @@ tr {
 
 .day,
 .empty-slot,
-.week-day {
+.week-day,
+.current-day {
   text-align: center;
   height: 40px;
 }
@@ -175,8 +176,17 @@ tr {
   line-height: 24px;
 }
 
+.day.red,
+.week-day.red {
+  color: #9f3a38;
+}
+
+.day.blue,
+.week-day.blue {
+  color: #276f86;
+}
 .current-day {
-  background-color: #4285f4;
+  background-color: #a3c293;
   width: 28px;
   height: 28px;
   line-height: 28px;

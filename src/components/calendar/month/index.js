@@ -11,8 +11,11 @@ export default class Calendar extends React.Component {
     const { weekdaysShort } = this.state.calendarSetting;
     //weekdays
     const weekdays = weekdaysShort.map(day => {
+      let className = "week-day";
+      if (day === "Sun") className += " red";
+      if (day === "Sat") className += " blue";
       return (
-        <th key={day} className="week-day">
+        <th key={day} className={className}>
           {day}
         </th>
       );
@@ -20,7 +23,7 @@ export default class Calendar extends React.Component {
     return weekdays;
   }
   slotsRender() {
-    const { firstDayOfMonth, lastDayOfMonth } = this.state.day;
+    const { firstDayOfMonth, lastDayOfMonth, fullYear, month } = this.state.day;
     const blanks = [];
 
     //blanks
@@ -34,9 +37,25 @@ export default class Calendar extends React.Component {
 
     //total days
     const daysInMonth = [];
-    for (let d = 1; d <= lastDayOfMonth; d++) {
+    let today = DateUtil.getDateInfo();
+    for (
+      let d = 1, x = parseInt(firstDayOfMonth) + 1;
+      d <= lastDayOfMonth;
+      d++, x++
+    ) {
+      //해당 날짜가 오늘날짜 인지 확인(to check out today)
+      let className =
+        fullYear + month + d ===
+        today.fullYear + today.month + parseInt(today.date)
+          ? "current-day"
+          : "day";
+
+      if (x % 7 === 1) className += " red";
+
+      if (x % 7 === 0) className += " blue";
+
       daysInMonth.push(
-        <td key={d} className="day">
+        <td key={d} className={className}>
           <span>{d}</span>
         </td>
       );

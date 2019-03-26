@@ -8,11 +8,13 @@ import Header from "./Header";
 import Login from "../components/auth/LogIn";
 import Week from "./calendar/weekly/Week";
 import Calendar from "./calendar/month";
-import CustomerList from "./customers/CustomerList";
+
 import ScheduleCreate from "./calendar/schedule/ScheduleCreate";
 import ScheduleDetail from "./calendar/schedule/ScheduleDetail";
 import ScheduleEdit from "./calendar/schedule/ScheduleEdit";
 import ScheduleDelete from "./calendar/schedule/ScheduleDelete";
+import CustomerList from "./customers/CustomerList";
+import CustomerCreate from "./customers/CustomerCreate";
 class App extends Component {
   componentDidMount() {
     this.props.fetchDay();
@@ -51,7 +53,11 @@ class App extends Component {
                 component={ScheduleDelete}
                 path="/index/delete/:date/:start"
               />
-              <Route component={CustomerList} path="/index/customers" />
+              <Route component={CustomerList} exact path="/index/customers" />
+              <Route
+                component={CustomerCreate}
+                path="/index/customers/create"
+              />
             </div>
           </div>
         </div>

@@ -28,13 +28,14 @@ export const renderInputWithButton = ({ input, label, meta, type, width }) => {
   );
 };
 
-export const renderInput = ({ input, label, meta, type, width }) => {
+export const renderInput = ({ input, label, meta, type, width, icon }) => {
   const className = ` ${width} field ${
     meta.error && meta.touched ? "error" : ""
   }`;
   return (
     <div className={className}>
-      <label>{label}</label>
+      {label && <label>{label}</label>}
+      {icon && <i className={icon} />}
       <input {...input} autoComplete="off" type={type} />
       {renderError(meta)}
     </div>
